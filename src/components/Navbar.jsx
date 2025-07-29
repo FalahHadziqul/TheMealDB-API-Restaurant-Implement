@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-const Navbar = ({ isTransparent }) => {
+const Navbar = () => {
   return (
-    <nav className={`w-full p-2 fixed top-0 left-0 z-50 ${isTransparent ? "bg-transparent text-black" : "bg-white text-black shadow"}`}>
+    <nav className={`bg-white w-full p-2 fixed top-0 left-0 z-50 shadow`}>
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-3xl font-bold">D'lios!</h1>
           <ul className="flex space-x-4">

@@ -4,10 +4,10 @@ import { useLocation } from 'react-router-dom';
 
 function Home() {
   const location = useLocation();
-  const isTransparent = location.pathname === "/explore";
+
   return (
     <>
-      <Navbar isTransparent={isTransparent}/> 
+      <Navbar /> 
 
       <Hero />
     </>
