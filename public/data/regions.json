@@ -1,0 +1,120 @@
+{
+  "meals": [
+    {
+      "strArea": "American",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/sywswr1511383814.jpg"
+    },
+    {
+      "strArea": "British",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/xusqvw1511638311.jpg"
+    },
+    {
+      "strArea": "Canadian",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/ryppsv1511815505.jpg"
+    },
+    {
+      "strArea": "Chinese",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/1529444830.jpg"
+    },
+    {
+      "strArea": "Croatian",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/tkxquw1628771028.jpg"
+    },
+    {
+      "strArea": "Dutch",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/lhqev81565090111.jpg"
+    },
+    {
+      "strArea": "Egyptian",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/rlwcc51598734603.jpg"
+    },
+    {
+      "strArea": "Filipino",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/pkopc31683207947.jpg"
+    },
+    {
+      "strArea": "French",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/vtqxtu1511784197.jpg"
+    },
+    {
+      "strArea": "Greek",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/k29viq1585565980.jpg"
+    },
+    {
+      "strArea": "Indian",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/urtpqw1487341253.jpg"
+    },
+    {
+      "strArea": "Irish",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/naqyel1608588563.jpg"
+    },
+    {
+      "strArea": "Italian",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/1549542877.jpg"
+    },
+    {
+      "strArea": "Jamaican",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/sypxpx1515365095.jpg"
+    },
+    {
+      "strArea": "Japanese",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/tyywsw1505930373.jpg"
+    },
+    {
+      "strArea": "Kenyan",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg"
+    },
+    {
+      "strArea": "Malaysian",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg"
+    },
+    {
+      "strArea": "Mexican",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/uuqvwu1504629254.jpg"
+    },
+    {
+      "strArea": "Moroccan",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/qxytrx1511304021.jpg"
+    },
+    {
+      "strArea": "Polish",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/md8w601593348504.jpg"
+    },
+    {
+      "strArea": "Portuguese",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/a15wsa1614349126.jpg"
+    },
+    {
+      "strArea": "Russian",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/svprys1511176755.jpg"
+    },
+    {
+      "strArea": "Spanish",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/xd9aj21740432378.jpg"
+    },
+    {
+      "strArea": "Thai",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/tvttqv1504640475.jpg"
+    },
+    {
+      "strArea": "Tunisian",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/t3r3ka1560461972.jpg"
+    },
+    {
+      "strArea": "Turkish",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg"
+    },
+    {
+      "strArea": "Ukrainian",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/zadvgb1699012544.jpg"
+    },
+    {
+      "strArea": "Uruguayan",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/n7qnkb1630444129.jpg"
+    },
+    {
+      "strArea": "Vietnamese",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/z0ageb1583189517.jpg"
+    }
+  ]
+}
