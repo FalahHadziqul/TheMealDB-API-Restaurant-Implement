@@ -6,12 +6,17 @@ const GridCategories  = () => {
   const [foods, setFoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentView, setCurrentView] = useState('categories');
+  const [meals, setMeals] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+
   const handleClick = () => {
     setIsFavorite(!isFavorite);
   };
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchCategories = async () => {
       try {
         setLoading(true);
         // Fetch Data dari TheMealDBAPI
@@ -31,15 +36,53 @@ const GridCategories  = () => {
       }
     };
 
-    fetchProducts();
+    fetchCategories();
   }, []);
+
+  // Fetch meals by category // DONE
+  const fetchMealsByCategory = async (category) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+      const data = await response.json();
+      setMeals(data.meals || []);
+    } catch (error) {
+      console.error('Error fetching meals:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Update URL when state changes
+  const updateURL = (view, category = '', search = '') => {
+    const params = new URLSearchParams();
+    if (category) params.set('category', category);
+    if (search) params.set('search', search);
+    
+    const searchString = params.toString();
+    const url = searchString ? `?${searchString}` : '';
+    
+    if (view === 'meals') {
+      window.history.pushState({}, '', `${url}#meals`);
+    } else {
+      window.history.pushState({}, '', searchString ? `?${searchString}` : '/');
+    }
+  };
+
+  // Handle show more button click // DONE
+  const handleShowMore = (categoryName) => {
+    setSelectedCategory(categoryName);
+    setCurrentView('meals');
+    updateURL('meals', categoryName, searchQuery);
+    fetchMealsByCategory(categoryName);
+  };
 
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 p-6">
         <div className="max-w-[90rem] mx-auto">
           <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Categories
+            Loading..
           </h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {/* Loading skeleton */}
@@ -78,59 +121,103 @@ const GridCategories  = () => {
 
   return (
     <div className="min-h-screen"> {/* Parent yang menngisi full height view-port*/}
-      <div className="max-w-[90rem] mx-auto">
-        <h1 className="underline sm:no-underline text-3xl lg:text-4xl font-bold text-gray-900 mb-8 text-center">
-          Categories</h1>
-        
-        {/* Responsive Grid : 1 col mobile, 2 cols tablet, 3 cols desktop, 4 cols large desktop */}
-        <div className="sm:mb-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-y-6 gap-x-4">
-          {foods.map((product) => (
-            <div key={product.idCategory} className="sm:border sm:border-gray-300 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-100">
-              {/* Product Image */}
-              <div className="relative h-60 lg:h-50 xl:h-45 overflow-hidden">
-                <img
-                  src={product.strCategoryThumb}
-                  alt={product.strCategory}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  onError={(e) => {
-                    e.target.src = 'https://via.placeholder.com/300x300?text=No+Image';
-                  }}
-                />
-                {/* Kategori */}
-                <div className="absolute top-2 right-2">
-                  <button
-                  onClick={handleClick}
-                  className={`
-                    p-2 
-                    rounded-full 
-                    transition-transform 
-                    duration-300 
-                    hover:scale-125 
-                    ${isFavorite ? 'text-red-500' : 'text-gray-400'}
-                  `}>
-                    <Heart className={`w-8 h-8 lg:w-6 lg:h-6 ${isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-500'}`} />
-                  </button>
+      <div className=" max-w-[90rem] mx-auto">
+        {/* 1 col mobile, 2 cols tablet, 3 cols desktop, 5 cols large desktop */}
+        {currentView === 'categories' ? (
+          <>
+            <h1 className="underline sm:no-underline text-3xl lg:text-4xl font-bold text-gray-900 mb-8 text-center">
+              Categories</h1>
+            <div className="sm:mb-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-y-6 gap-x-4">
+              {foods.map((product) => (
+                <div key={product.idCategory} className="sm:border sm:border-gray-300 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-100">
+                  {/* Product Image */}
+                  <div className="relative h-60 lg:h-50 xl:h-45 overflow-hidden">
+                    <img
+                      src={product.strCategoryThumb}
+                      alt={product.strCategory}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        e.target.src = 'https://via.placeholder.com/300x300?text=No+Image';
+                      }}
+                    />
+                  </div>
+                  
+                  {/* Product Info */}
+                  <div className="p-4">
+                    <h3 className=" text-center font-semibold text-gray-900 mb-2 line-clamp-2 text-lg">
+                      {product.strCategory}
+                    </h3>
+                    
+                    <p className="text-gray-600 text-xs mb-3 line-clamp-3">
+                      {product.strCategoryDescription}
+                    </p>
+                    
+                    <button 
+                      onClick={() => handleShowMore(product.strCategory)}
+                      className="w-full mt-3 bg-orange-500 text-white py-2 rounded-lg hover:bg-red-400 transition-colors text-sm font-medium">
+                      Explore More
+                    </button>
+                  </div>
                 </div>
-              </div>
-              
-              {/* Product Info */}
-              <div className="p-4">
-                <h3 className=" text-center font-semibold text-gray-900 mb-2 line-clamp-2 text-lg">
-                  {product.strCategory}
-                </h3>
-                
-                <p className="text-gray-600 text-xs mb-3 line-clamp-3">
-                  {product.strCategoryDescription}
-                </p>
-                
-                <button className="w-full mt-3 bg-orange-500 text-white py-2 rounded-lg hover:bg-red-400 transition-colors text-sm font-medium">
-                  Explore More
-                </button>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-        
+          </>
+        ) : (
+          <>
+            <h1 className="underline sm:no-underline text-3xl lg:text-4xl font-bold text-gray-900 mb-8 text-center">
+              {selectedCategory} Categories</h1>
+            <div className="sm:mb-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-y-6 gap-x-4">
+              {meals.map((product) => (
+                <div key={product.idMeal} className="sm:border sm:border-gray-300 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-100">
+                  {/* Meal Image */}
+                  <div className="relative h-60 lg:h-50 xl:h-45 overflow-hidden">
+                    <img
+                      src={product.strMealThumb}
+                      alt={product.strMeal}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        e.target.src = 'https://via.placeholder.com/300x300?text=No+Image';
+                      }}
+                    />
+                  </div>
+                  
+                  {/* Product Info */}
+                  <div className="relative p-4">
+                    {/* Favorite */}
+                    <div className="absolute top-2 right-2">
+                      <button
+                      onClick={handleClick}
+                      className={`
+                        p-2 
+                        rounded-full 
+                        transition-transform 
+                        duration-300 
+                        hover:scale-125 
+                        ${isFavorite ? 'text-red-500' : 'text-black'}
+                      `}>
+                        <Heart className={`w-8 h-8 lg:w-6 lg:h-6 ${isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-500'}`} />
+                      </button>
+                    </div>
+
+                    <h3 className="pr-8 text-center font-semibold text-gray-900 mb-2 line-clamp-2 text-lg">
+                      {product.strMeal}
+                    </h3>
+                    
+                    <p className="text-gray-600 text-xs mb-3 line-clamp-3">
+                      {product.strCategoryDescription}
+                    </p>
+                    
+                    <button className="w-full mt-3 bg-pink-600 text-white py-2 rounded-lg hover:bg-red-400 transition-colors text-sm font-medium">
+                      Show Recipe
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+
+        )}
+    
         {foods.length === 0 && !loading && (
           <div className="text-center py-12">
             <p className="text-gray-500 text-lg">No foods found.</p>

@@ -4,19 +4,30 @@ const Hero = () => {
   const navigate = useNavigate();
   
   return (
-      <section className="w-full h-screen relative">
-        <img src="/BannerCroppedMore.jpg" alt="Hero" className="w-full h-full object-cover blur-[3px]"/>
-        <div className="absolute inset-0 bg-black opacity-45"></div>
-        <div className="absolute inset-0 flex flex-col items-start justify-center">
-          <h1 className="text-white text-7xl font-bold -translate-y-5 translate-x-58">The World's Culinary</h1>
-          <h2 className="text-white text-4xl font-bold -translate-y-5 translate-x-60">At Its Finest ~</h2>
-          <h3 className="text-white text-2xl font-bold -translate-y-5 translate-x-60">Bring your favorite meals to life now with D’lios!</h3>
-          <button onClick={() => navigate("/exploreCategories")} className="mt-6 px-6 py-2 text-white border border-white rounded-lg 
-          hover:bg-white hover:text-black transition-colors duration-300 -translate-y-5 translate-x-60 font-bold">
-            Start Cooking !
-          </button>
-        </div>
-      </section>
+    <section className="w-full h-screen relative overflow-hidden">
+      <picture className="absolute inset-0 w-full h-full">
+        <source media="(min-width: 640px)" srcSet="/BannerCroppedMore.jpg" />
+        <img
+          src="/BannerMobile.jpg"
+          alt="Banner"
+          className="w-full h-full object-cover"
+        />
+      </picture>
+
+      <div className="absolute inset-0 bg-black opacity-45"></div>
+
+      <div className="absolute inset-0 flex flex-col items-start justify-center px-6 sm:translate-x-8 xl:translate-x-35">
+        <h1 className="text-white text-5xl md:text-7xl font-bold mb-2">The World's Culinary</h1>
+        <h2 className="text-white text-2xl md:text-4xl font-semibold mb-2">At Its Finest ~</h2>
+        <h3 className="text-white text-base md:text-2xl mb-4">Bring your favorite meals to life now with D’lios!</h3>
+        <button
+          onClick={() => navigate("/exploreCategories")}
+          className="px-6 py-2 text-white border border-white rounded-lg hover:bg-white hover:text-black transition-colors duration-300 font-bold"
+        >
+          Start Cooking !
+        </button>
+      </div>
+    </section>
   );
 };
 
