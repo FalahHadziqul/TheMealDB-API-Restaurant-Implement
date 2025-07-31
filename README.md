@@ -2,7 +2,7 @@
 
 Welcome to **D’lios**! This web app lets you explore food categories and regional cuisines from around the world, discover recipes, and view detailed meal instructions—all powered by [TheMealDB](https://www.themealdb.com/).
 
-## 🚀 Features
+## Features
 
 - **Hero Banner**: Eye-catching landing section with a call to action.
 - **Explore Categories**: Browse meals by category with images and descriptions.
@@ -11,7 +11,7 @@ Welcome to **D’lios**! This web app lets you explore food categories and regio
 - **Responsive Design**: Works great on desktop and mobile.
 - **Loading & Error States**: User-friendly feedback while fetching data.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **React** (with hooks)
 - **React Router**
@@ -19,7 +19,7 @@ Welcome to **D’lios**! This web app lets you explore food categories and regio
 - **TheMealDB API**
 - **Lucide React** (icons)
 
-## 📦 Getting Started
+## Getting Started
 
 1. **Clone the repo:**
    ```sh
@@ -60,10 +60,6 @@ src/
 - [TheMealDB](https://www.themealdb.com/) for the free meal API and images.
 - [Lucide Icons](https://lucide.dev/) for icons.
 - [Tailwind CSS](https://tailwindcss.com/) for styling.
-
-## 📄 License
-
-MIT (or your preferred license)
 
 ---
 
