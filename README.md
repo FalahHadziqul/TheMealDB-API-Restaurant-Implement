@@ -2,7 +2,7 @@
 
 Welcome to **D’lios**! This web app lets you explore food categories and regional cuisines from around the world, discover recipes, and view detailed meal instructions—all powered by [TheMealDB](https://www.themealdb.com/).
 
-[Live Demo on Vercel]([https://your-vercel-app-url.vercel.app/)](https://the-meal-db-api-restaurant-implemen.vercel.app/)
+[Live Demo on Vercel]((https://the-meal-db-api-restaurant-implemen.vercel.app/)
 
 ## Features
 
@@ -25,8 +25,8 @@ Welcome to **D’lios**! This web app lets you explore food categories and regio
 
 1. **Clone the repo:**
    ```sh
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/FalahHadziqul/TheMealDB-API-Restaurant-Implement.git
+   cd TheMealDB-API-Restaurant-Implement
    ```
 
 2. **Install dependencies:**
@@ -44,7 +44,7 @@ Welcome to **D’lios**! This web app lets you explore food categories and regio
    ```
 
 4. **Open in your browser:**  
-   Visit [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal).
+   Visit port shown in your terminal.
 
 ## 📁 Project Structure
 
